@@ -1,3 +1,11 @@
+### WIP
+
+As the bootstrap resource is derived from the newer  This provider is dependent on resolution of the following issues:
+https://github.com/upbound/upjet/issues/130
+https://github.com/upbound/upjet/issues/131
+
+interim workaround - https://github.com/upbound/upjet/issues/121#issuecomment-1290569474
+
 # Provider Flux
 
 `provider-flux` is a [Crossplane](https://crossplane.io/) provider that
@@ -58,3 +66,4 @@ make build
 
 For filing bugs, suggesting improvements, or requesting new features, please
 open an [issue](https://github.com/fire-ant/provider-flux/issues).
+
