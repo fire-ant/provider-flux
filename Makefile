@@ -22,11 +22,17 @@ export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-null
 export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-null_v3.1.0_x5
 =======
 export TERRAFORM_PROVIDER_SOURCE := fluxcd/flux
-export TERRAFORM_PROVIDER_REPO := https://github.com/fluxcd/terraform-provider-flux
+export TERRAFORM_PROVIDER_REPO := https://github.com/fluxcd
 export TERRAFORM_PROVIDER_VERSION := 0.23.0
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-flux
+<<<<<<< HEAD
 export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-flux_v0.23.0
 >>>>>>> 067d185 (progress)
+||||||| parent of 8dc3e02 (req for non third party modules)
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-flux_v0.23.0
+=======
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-flux_0.23.0
+>>>>>>> 8dc3e02 (req for non third party modules)
 export TERRAFORM_DOCS_PATH := docs/resources
 
 PLATFORMS ?= linux_amd64 linux_arm64
@@ -136,12 +142,26 @@ pull-docs:
 	@if [ ! -d "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" ]; then \
   		mkdir -p "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" && \
 <<<<<<< HEAD
+<<<<<<< HEAD
 		git clone -c advice.detachedHead=false --depth 1 --filter=blob:none --branch "v$(TERRAFORM_PROVIDER_VERSION)" --sparse "$(TERRAFORM_PROVIDER_REPO)/$(TERRAFORM_PROVIDER_DOWNLOAD_NAME)" "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)"; \
 ||||||| parent of c6e2b2d (init)
 		git clone -c advice.detachedHead=false --depth 1 --filter=blob:none --branch "v$(TERRAFORM_PROVIDER_VERSION)" --sparse "$(TERRAFORM_PROVIDER_REPO)" "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)"; \
 =======
+||||||| parent of bcf7e18 (req for non third party modules)
+=======
+<<<<<<< HEAD
+>>>>>>> bcf7e18 (req for non third party modules)
 		git clone -c advice.detachedHead=false --depth 1 --filter=blob:none --branch "${TERRAFORM_PROVIDER_BRANCH}" "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)"; \
+<<<<<<< HEAD
 >>>>>>> c6e2b2d (init)
+||||||| parent of bcf7e18 (req for non third party modules)
+=======
+||||||| parent of 8dc3e02 (req for non third party modules)
+		git clone -c advice.detachedHead=false --depth 1 --filter=blob:none --branch "v$(TERRAFORM_PROVIDER_VERSION)" --sparse "$(TERRAFORM_PROVIDER_REPO)" "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)"; \
+=======
+		git clone -c advice.detachedHead=false --depth 1 --filter=blob:none --branch "v$(TERRAFORM_PROVIDER_VERSION)" --sparse "$(TERRAFORM_PROVIDER_REPO)/$(TERRAFORM_PROVIDER_DOWNLOAD_NAME)" "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)"; \
+>>>>>>> 8dc3e02 (req for non third party modules)
+>>>>>>> bcf7e18 (req for non third party modules)
 	fi
 	@git -C "$(WORK_DIR)/$(TERRAFORM_PROVIDER_SOURCE)" sparse-checkout set "$(TERRAFORM_DOCS_PATH)"
 
