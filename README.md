@@ -1,12 +1,5 @@
-<<<<<<< HEAD
 ### WIP
-||||||| parent of c6e2b2d (init)
-# Provider Template
-=======
-# Provider Flux
->>>>>>> c6e2b2d (init)
 
-<<<<<<< HEAD
 As the bootstrap resource is derived from the newer  This provider is dependent on resolution of the following issues:
 https://github.com/upbound/upjet/issues/130
 https://github.com/upbound/upjet/issues/131
@@ -16,11 +9,6 @@ interim workaround - https://github.com/upbound/upjet/issues/121#issuecomment-12
 # Provider Flux
 
 `provider-flux` is a [Crossplane](https://crossplane.io/) provider that
-||||||| parent of c6e2b2d (init)
-`upjet-provider-template` is a [Crossplane](https://crossplane.io/) provider that
-=======
-`provider-flux` is a [Crossplane](https://crossplane.io/) provider that
->>>>>>> c6e2b2d (init)
 is built using [Upjet](https://github.com/upbound/upjet) code
 generation tools and exposes XRM-conformant managed resources for the
 Flux API.
@@ -77,11 +65,5 @@ make build
 ## Report a Bug
 
 For filing bugs, suggesting improvements, or requesting new features, please
-<<<<<<< HEAD
 open an [issue](https://github.com/fire-ant/provider-flux/issues).
 
-||||||| parent of c6e2b2d (init)
-open an [issue](https://github.com/upbound/upjet-provider-template/issues).
-=======
-open an [issue](https://github.com/fire-ant/provider-flux/issues).
->>>>>>> c6e2b2d (init)
