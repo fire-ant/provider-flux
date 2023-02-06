@@ -7,12 +7,26 @@ PROJECT_REPO := github.com/fire-ant/$(PROJECT_NAME)
 
 export TERRAFORM_VERSION := 1.3.3
 
+<<<<<<< HEAD
 export TERRAFORM_PROVIDER_SOURCE := fluxcd/flux
 export TERRAFORM_PROVIDER_REPO := https://github.com/fluxcd/terraform-provider-flux
 export TERRAFORM_PROVIDER_BRANCH := features/bootstrap-resource
 export TERRAFORM_PROVIDER_VERSION := 0.21.0
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-flux
 export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-flux_v0.21.0
+||||||| parent of 067d185 (progress)
+export TERRAFORM_PROVIDER_SOURCE := hashicorp/null
+export TERRAFORM_PROVIDER_REPO := https://github.com/hashicorp/terraform-provider-null
+export TERRAFORM_PROVIDER_VERSION := 3.1.0
+export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-null
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-null_v3.1.0_x5
+=======
+export TERRAFORM_PROVIDER_SOURCE := fluxcd/flux
+export TERRAFORM_PROVIDER_REPO := https://github.com/fluxcd/terraform-provider-flux
+export TERRAFORM_PROVIDER_VERSION := 0.23.0
+export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-flux
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-flux_v0.23.0
+>>>>>>> 067d185 (progress)
 export TERRAFORM_DOCS_PATH := docs/resources
 
 PLATFORMS ?= linux_amd64 linux_arm64
