@@ -1,21 +1,22 @@
-apiVersion: flux.upbound.io/v1beta1
-kind: Bootstrap
+apiVersion: bootstrap.flux.upbound.io/v1alpha1
+kind: Git
 metadata:
   name: flux-bootstrap
   labels:
     testing.upbound.io/example-name: flux-bootstrap
 spec:
-  url: https://github.com/fluxcd/flux2-multi-tenancy.git
-  branch: main
-  components:
-    - source-controller
-    - helm-controller
-    - kustomize-controller
-  interval: 5m
-  log_level: debug
-  path: clusters/staging
-  secret_name: flux-secret # Name of the secret the sync credentials can be found in or stored to.
-  version: v0.39
+  forProvider:
+    url: https://github.com/fluxcd/flux2-multi-tenancy.git
+    branch: main
+    components:
+      - source-controller
+      - helm-controller
+      - kustomize-controller
+    interval: 5m
+    logLevel: debug
+    path: clusters/staging
+    secretName: flux-secret # Name of the secret the sync credentials can be found in or stored to.
+    version: v0.39
   # http:
   #   password: ""
   #   username: ""

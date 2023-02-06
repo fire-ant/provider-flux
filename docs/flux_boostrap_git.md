@@ -12,40 +12,40 @@ metadata:
     testing.upbound.io/example-name: flux-bootstrap
 spec:
   url: "" #: "" # Url of git repository to bootstrap from. Only required option in list
-  author_email: "" # Author email for Git commits.
-  author_name: "" # Author name for Git commits.
+  authorEmail: "" # Author email for Git commits.
+  authorName: "" # Author name for Git commits.
   branch: "" # Branch in repository to reconcile from.
-  cluster_domain: "" # The internal cluster domain.
-  commit_message_appendix: "" # String to add to the commit messages.
+  clusterDomain: "" # The internal cluster domain.
+  commitMessageAppendix: "" # String to add to the commit messages.
   components: [] # [EX1,EX2] Toolkit components to include in the install manifests.
-  components_extra: [] # [EX1,EX2] List of extra components to include in the install manifests.
-  gpg_key_id: "" # Key id for selecting a particular key.
-  gpg_key_ring: "" # GPG key ring for signing commits.
-  gpg_passphrase: "" # Sensitive/Secret string  Passphrase for decrypting GPG private key.
-  image_pull_secret: "" # Kubernetes secret name used for pulling the toolkit images from a private registry.
+  componentsExtra: [] # [EX1,EX2] List of extra components to include in the install manifests.
+  gpgKeyId: "" # Key id for selecting a particular key.
+  gpgKeyRing: "" # GPG key ring for signing commits.
+  gpgPassphrase: "" # Sensitive/Secret string  Passphrase for decrypting GPG private key.
+  imagePullSecret: "" # Kubernetes secret name used for pulling the toolkit images from a private registry.
   interval: "" # Interval at which to reconcile from bootstrap repository.
-  kustomization_override: "" # Kustomization to override configuration set by default.
-  log_level: "" # Log level for toolkit components.
+  kustomizationOverride: "" # Kustomization to override configuration set by default.
+  logLevel: "" # Log level for toolkit components.
   namespace: "" # The namespace scope for install manifests.
-  network_policy: "" # Boolean Deny ingress access to the toolkit controllers from other namespaces using network policies.
+  networkPolicy: "" # Boolean Deny ingress access to the toolkit controllers from other namespaces using network policies.
   path: "" # Path relative to the repository root, when specified the cluster sync will be scoped to this path.
-  recurse_submodules: "" # Boolean Configures the GitRepository source to initialize and include Git submodules in the artifact it produces.
+  recurseSubmodules: "" # Boolean Configures the GitRepository source to initialize and include Git submodules in the artifact it produces.
   registry: "" # Container registry where the toolkit images are published.
-  secret_name: "" # Name of the secret the sync credentials can be found in or stored to.
-  toleration_keys: [] # [EX1,EX2] List of toleration keys used to schedule the components pods onto nodes with matching taints.
+  secretName: "" # Name of the secret the sync credentials can be found in or stored to.
+  tolerationKeys: [] # [EX1,EX2] List of toleration keys used to schedule the components pods onto nodes with matching taints.
   version: "" # Flux version.
-  watch_all_namespaces: "" # Boolean If true watch for custom resources in all namespaces.
+  watchAllNamespaces: "" # Boolean If true watch for custom resources in all namespaces.
   http:
-    allow_insecure_http: "" # Boolean Allows http Git url connections.
-    certificate_authority: "" # Certificate authority to validate self-signed certificates.
+    allowInsecureHttp: "" # Boolean Allows http Git url connections.
+    certificateAuthority: "" # Certificate authority to validate self-signed certificates.
     password: "" # Sensitive/Secret string  Password for basic authentication.
     username: "" # Username for basic authentication.
   ssh:
     password: "" # Sensitive/Secret string  Password for private key.
-    private_key: "" # Sensitive/Secret string  Private key used for authenticating to the Git SSH server.
+    privateKey: "" # Sensitive/Secret string  Private key used for authenticating to the Git SSH server.
     username: "" # Username for Git SSH server.
 
   # Read-Only
   id: "" # The ID of this resource.
-  repository_files: [] # [VAL=EX1,VAL=EX2] Git repository files created and managed by the provider.
+  repositoryFiles: [] # [VAL=EX1,VAL=EX2] Git repository files created and managed by the provider.
 ```
