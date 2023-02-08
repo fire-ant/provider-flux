@@ -5,18 +5,18 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
-  name: resources.null.template.upbound.io
+  name: gits.bootstrap.flux.upbound.io
 spec:
-  group: null.template.upbound.io
+  group: bootstrap.flux.upbound.io
   names:
     categories:
     - crossplane
     - managed
-    - template
-    kind: Resource
-    listKind: ResourceList
-    plural: resources
-    singular: resource
+    - flux
+    kind: Git
+    listKind: GitList
+    plural: gits
+    singular: git
   scope: Cluster
   versions:
   - additionalPrinterColumns:
@@ -35,7 +35,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Resource is the Schema for the Resources API. <no value>
+        description: Git is the Schema for the Gits API. <no value>
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -50,7 +50,7 @@ spec:
           metadata:
             type: object
           spec:
-            description: ResourceSpec defines the desired state of Resource
+            description: GitSpec defines the desired state of Git
             properties:
               deletionPolicy:
                 default: Delete
@@ -63,13 +63,182 @@ spec:
                 type: string
               forProvider:
                 properties:
-                  triggers:
-                    additionalProperties:
+                  authorEmail:
+                    description: Author email for Git commits.
+                    type: string
+                  authorName:
+                    description: Author name for Git commits.
+                    type: string
+                  branch:
+                    description: Branch in repository to reconcile from.
+                    type: string
+                  clusterDomain:
+                    description: The internal cluster domain.
+                    type: string
+                  commitMessageAppendix:
+                    description: String to add to the commit messages.
+                    type: string
+                  components:
+                    description: Toolkit components to include in the install manifests.
+                    items:
                       type: string
-                    description: A map of arbitrary strings that, when changed, will
-                      force the null resource to be replaced, re-running any associated
-                      provisioners.
+                    type: array
+                  componentsExtra:
+                    description: List of extra components to include in the install
+                      manifests.
+                    items:
+                      type: string
+                    type: array
+                  gpgKeyId:
+                    description: Key id for selecting a particular key.
+                    type: string
+                  gpgKeyRing:
+                    description: GPG key ring for signing commits.
+                    type: string
+                  gpgPassphraseSecretRef:
+                    description: Passphrase for decrypting GPG private key.
+                    properties:
+                      key:
+                        description: The key to select.
+                        type: string
+                      name:
+                        description: Name of the secret.
+                        type: string
+                      namespace:
+                        description: Namespace of the secret.
+                        type: string
+                    required:
+                    - key
+                    - name
+                    - namespace
                     type: object
+                  http:
+                    items:
+                      properties:
+                        allowInsecureHttp:
+                          description: Allows http Git url connections.
+                          type: boolean
+                        certificateAuthority:
+                          description: Certificate authority to validate self-signed
+                            certificates.
+                          type: string
+                        passwordSecretRef:
+                          description: Password for basic authentication.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        username:
+                          description: Username for basic authentication.
+                          type: string
+                      type: object
+                    type: array
+                  imagePullSecret:
+                    description: Kubernetes secret name used for pulling the toolkit
+                      images from a private registry.
+                    type: string
+                  interval:
+                    description: Interval at which to reconcile from bootstrap repository.
+                    type: string
+                  kustomizationOverride:
+                    description: Kustomization to override configuration set by default.
+                    type: string
+                  logLevel:
+                    description: Log level for toolkit components.
+                    type: string
+                  namespace:
+                    description: The namespace scope for install manifests.
+                    type: string
+                  networkPolicy:
+                    description: Deny ingress access to the toolkit controllers from
+                      other namespaces using network policies.
+                    type: boolean
+                  path:
+                    description: Path relative to the repository root, when specified
+                      the cluster sync will be scoped to this path.
+                    type: string
+                  recurseSubmodules:
+                    description: Configures the GitRepository source to initialize
+                      and include Git submodules in the artifact it produces.
+                    type: boolean
+                  registry:
+                    description: Container registry where the toolkit images are published.
+                    type: string
+                  secretName:
+                    description: Name of the secret the sync credentials can be found
+                      in or stored to.
+                    type: string
+                  ssh:
+                    items:
+                      properties:
+                        passwordSecretRef:
+                          description: Password for private key.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        privateKeySecretRef:
+                          description: Private key used for authenticating to the
+                            Git SSH server.
+                          properties:
+                            key:
+                              description: The key to select.
+                              type: string
+                            name:
+                              description: Name of the secret.
+                              type: string
+                            namespace:
+                              description: Namespace of the secret.
+                              type: string
+                          required:
+                          - key
+                          - name
+                          - namespace
+                          type: object
+                        username:
+                          description: Username for Git SSH server.
+                          type: string
+                      type: object
+                    type: array
+                  tolerationKeys:
+                    description: List of toleration keys used to schedule the components
+                      pods onto nodes with matching taints.
+                    items:
+                      type: string
+                    type: array
+                  url:
+                    description: Url of git repository to bootstrap from.
+                    type: string
+                  version:
+                    description: Flux version.
+                    type: string
+                  watchAllNamespaces:
+                    description: If true watch for custom resources in all namespaces.
+                    type: boolean
+                required:
+                - url
                 type: object
               providerConfigRef:
                 default:
@@ -243,12 +412,17 @@ spec:
             - forProvider
             type: object
           status:
-            description: ResourceStatus defines the observed state of Resource.
+            description: GitStatus defines the observed state of Git.
             properties:
               atProvider:
                 properties:
                   id:
                     type: string
+                  repositoryFiles:
+                    additionalProperties:
+                      type: string
+                    description: Git repository files created and managed by the provider.
+                    type: object
                 type: object
               conditions:
                 description: Conditions of the resource.

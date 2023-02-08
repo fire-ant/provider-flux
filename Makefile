@@ -1,3 +1,4 @@
+
 # ====================================================================================
 # Setup Project
 
@@ -8,10 +9,9 @@ export TERRAFORM_VERSION := 1.3.3
 
 export TERRAFORM_PROVIDER_SOURCE := fluxcd/flux
 export TERRAFORM_PROVIDER_REPO := https://github.com/fluxcd/terraform-provider-flux
-export TERRAFORM_PROVIDER_BRANCH := features/bootstrap-resource
-export TERRAFORM_PROVIDER_VERSION := 0.21.0
+export TERRAFORM_PROVIDER_VERSION := 0.23.0
 export TERRAFORM_PROVIDER_DOWNLOAD_NAME := terraform-provider-flux
-export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-flux_v0.21.0
+export TERRAFORM_NATIVE_PROVIDER_BINARY := terraform-provider-flux_v0.23.0
 export TERRAFORM_DOCS_PATH := docs/resources
 
 PLATFORMS ?= linux_amd64 linux_arm64
